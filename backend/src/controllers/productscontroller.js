@@ -22,13 +22,13 @@ productsController.createProducts = async (req, res) => {
  
 //delete
 
-productsController.deleteProducts = async (rec, res) => {
+productsController.deleteProducts = async (req, res) => {
 await productsModel.findOneAndDelete(req.params.id)
 res.json({message: "product deleted"})
 }
 
 // actualizar - post
-productsController.updatesProducts = async (rec, res) =>{
+productsController.updatesProducts = async (req, res) =>{
 const {name, descripction, price, stock} = req.body; // solicito los valores
 await productsModel.findByIdAndUpdate(req.params.id, {
     name,
