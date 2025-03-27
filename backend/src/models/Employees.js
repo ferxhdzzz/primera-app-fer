@@ -38,27 +38,27 @@ require: true
     password: {
         type: String,
         require: true,
-        min:7
+        
        
     },
 
     telephone: {
         type: String,
         require: true,
-        min: 8
+     
        
     },
 
     dui: {
         type: String,
         require: true,
-        min: 9
+     
        
     },
     isssNumber: {
         type: String,
         require: true,
-        min: 9
+     
        
     },
     isVerfied: {
