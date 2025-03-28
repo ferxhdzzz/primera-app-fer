@@ -12,8 +12,11 @@ export const config ={
     },
 
     jwt:{
-secret :process.env.JWT_SECRET,
-expiresIn :process.env.JWT_EXPIRES,
-    }
-
+secret :process.env.JWT_SECRET || "lesserafimnaespa",
+expiresIn :process.env.JWT_EXPIRES || "30d",
+    },
+    admin:{
+        ADMIN_USERNAME :process.env.ADMIN_USERNAME || "fernanda@gmail.com",
+        ADMIN_PASSWORD :process.env.ADMIN_PASSWORD || "lesserafimnaespa",
+            }
 }

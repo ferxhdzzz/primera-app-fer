@@ -8,8 +8,7 @@ const registeremployeesController = {};
 //post - agregar
           
 registeremployeesController.registerEmployees = async (req, res) => {
-    const {name, lastName, birthday, email, address,hireDate,passwordd,telephone,dui, isssNumber,isVerfied} = req.body; //req.body = lo que le pedimos al frontend
-    console.log({message: "valores"})
+    const {name, lastName, birthday, email, address,hireDate,password,telephone,dui, isssNumber,isVerfied} = req.body; //req.body = lo que le pedimos al frontend
 
 try {
 const existemployee = await registerEmployeesModel.findOne({email})
@@ -20,11 +19,11 @@ if(existemployee){
 }
 
 //encriptar
-const passwordhash = await bcryptjs.hash(passwordd,10)
+const passwordhash = await bcryptjs.hash(password,10)
 
 //guardar todo
 
-const  newemployee = new employeesModel({name, lastName, birthday, email, address,hireDate,password:passwordhash,telephone,dui, isssNumber,isVerfied});
+const  newemployee = new registerEmployeesModel({name, lastName, birthday, email, address,hireDate,password:passwordhash,telephone,dui, isssNumber,isVerfied});
 await newemployee.save()
 res.json({message: "employee saved"})
 
@@ -49,7 +48,7 @@ res.json({message: "empleado guardado"})
 
 }catch(error){
     console.log("error"+error)
-    res.json({message: "error savin employee"})
+
 
 }
 }
