@@ -18,5 +18,9 @@ expiresIn :process.env.JWT_EXPIRES || "30d",
     admin:{
         ADMIN_USERNAME :process.env.ADMIN_USERNAME || "fernanda@gmail.com",
         ADMIN_PASSWORD :process.env.ADMIN_PASSWORD || "lesserafimnaespa",
+            },
+            email:{
+                useremail:process.env.USER_EMAIL || "lovercotes@gmail.com" ,
+                userpassword:process.env.PASSWORD_EMAIL || "cbig yrkr bwql zsbx"
             }
 }
