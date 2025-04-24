@@ -9,6 +9,7 @@ import registerEmployeeRoutes from "./src/routes/registerEmployees.js"
 import registerCustomerRoutes from "./src/routes/registerCustomers.js"
 import login from "./src/routes/login.js"
 import logout from "./src/routes/logout.js"
+import recoveryPassword from "./src/routes/recoveryPassword.js"
 
 import cookieParser from "cookie-parser"
 
@@ -29,6 +30,7 @@ app.use("/api/registerEmployees",registerEmployeeRoutes)
 app.use("/api/login", login)
 app.use("/api/logout", logout)
 app.use("/api/registerCustomers", registerCustomerRoutes)
+app.use("/api/recoveryPassword", recoveryPassword)
 
 
 
