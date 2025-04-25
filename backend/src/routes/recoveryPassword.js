@@ -4,8 +4,7 @@ import recoveryPasswordController from "../controllers/recoveryPasswordcontrolle
 //coloca los metodos que tendra la la ruta
 const router = express.Router();
 
-router.route("recoveryPassword")
-.post( recoveryPasswordController.requestCode) //agregar
-//.post("/verifyCode") //agregar
-//.post("/newPassword") //agregar
+router.route("/requestCode").post( recoveryPasswordController.requestCode) 
+router.route("/verifyCode").post(recoveryPasswordController.verifyCode) 
+//router.route("/newPassword").post() //agregar
 export default router;
