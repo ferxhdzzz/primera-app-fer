@@ -99,4 +99,54 @@ res.json ({message:"verification code successfull"})
 
     }
 
+    //funcion nueva contra
+    passwordRecoveryController.newPassword= async(req, res) => {
+
+        const {newPassword} =req.body;
+        try {
+            
+//extraer el token
+const token = req.cookies.tokenRecoveryCode;
+
+//extraer info
+const decoded = jsonwebtoken.verify(token, config.jwt.secret)
+
+//verificar
+if(!decoded.verified){
+    return res.json ({message:"code not verified"})
+}
+
+//extraer email
+  const {email, userType} = decoded;
+
+  //encriptar
+  const hashedPassword = await bcryptjs.hash(newPassword, 10)
+
+  //actualizar contra
+  let updateUser;
+
+  if(userType === "customer"){
+    updateUser = await custmerModel.findOneAndUpdate(
+        {email},
+        {password: hashedPassword},
+        {new: true}
+    ) 
+    
+  }else if(userType === "employee"){
+    updateUser = await employeesModel.findOneAndUpdate(
+        {email},
+        {password: hashedPassword},
+        {new: true}
+    ) 
+    
+  }
+
+  res.clearCookie("tokenRecoveryCode")
+  res.json({message:"Password update"})
+        } catch (error) {
+            console.log("error" + error)
+
+        }
+    }
+
 export default passwordRecoveryController;
