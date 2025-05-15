@@ -22,5 +22,13 @@ expiresIn :process.env.JWT_EXPIRES || "30d",
             email:{
                 useremail:process.env.USER_EMAIL || "lovercotes@gmail.com" ,
                 userpassword:process.env.PASSWORD_EMAIL || "cbig yrkr bwql zsbx"
+            },
+        
+            cloudinary:{
+               cloudinary_name: process.env.CLOUDINAY_NAME || "db2flofrj",
+               cloudinary_api_key:  process.env.CLOUDINAY_API_NAME || "283625537914221",
+               cloudinay_api_secret:  process.env.CLOUDINAY_API_SECRET || "t-qHkhBMG63XEBLJd0QjHpecoq0"
             }
-}
+       
+        }
+        
