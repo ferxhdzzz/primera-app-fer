@@ -12,6 +12,8 @@ import logout from "./src/routes/logout.js"
 import recoveryPassword from "./src/routes/recoveryPassword.js"
 import providersRoutes from "./src/routes/providers.js"
 import brandsRoutes from "./src/routes/brands.js"
+import {validateAuthToker} from "./src/middleware/validateAuthtoken.js"
+
 
 import cookieParser from "cookie-parser"
 
@@ -23,17 +25,17 @@ app.use(express.json())
 app.use(cookieParser())
 
 //definir las rutas de las funciones en la app
-app.use("/api/products", productsRoutes)
+app.use("/api/products", validateAuthToker(["admin", "employees"]),productsRoutes)
 app.use("/api/customers",customersRoutes)
 app.use("/api/employees",emloyeesRoutes)
 app.use("/api/branches",branchesRoutes)
 app.use("/api/reviews",reviweRoutes)
-app.use("/api/registerEmployees",registerEmployeeRoutes)
+app.use("/api/registerEmployees",validateAuthToker(["admin"]),registerEmployeeRoutes)
 app.use("/api/login", login)
 app.use("/api/logout", logout)
 app.use("/api/registerCustomers", registerCustomerRoutes)
 app.use("/api/recoveryPassword", recoveryPassword)
-app.use("/api/providers", providersRoutes)
+app.use("/api/providers",validateAuthToker(["admin"]), providersRoutes)
 app.use("/api/brands", brandsRoutes)
 
 
